@@ -1,0 +1,119 @@
+/* Container that holds both the question card and the scoreboard */
+.question-page {
+  display: flex;
+  gap: 20px;
+  width: 100vw;
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  align-items: stretch;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* The main card for the question/answers */
+.question-card {
+  flex: 1;
+  background: #eee;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+}
+
+.question-card::-webkit-scrollbar{
+  display: none;
+}
+
+/* Title and question details */
+.question-title {
+  font-size: 1.8em;
+  color: #000000; /* Primary blue for heading */
+  margin: 0 0 5px 0;
+  font-weight: 550;
+}
+
+.question-details {
+  font-size: 1.1em;
+  color: #377cfc;
+  margin: 0 0 20px 0;
+}
+
+/* The main prompt text */
+.question-prompt {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+  color: #000000;
+}
+
+/* Visualization (video or image) container */
+.visualization-container {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Options (answers) */
+.options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.option-button {
+  padding: 10px 20px;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #ffffff;
+  color: #ffffff;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.option-button:hover {
+  background-color: #060ce9;
+}
+
+.option-button:disabled {
+  background-color: #bbbbbb;
+  cursor: default;
+}
+
+/* Feedback text (e.g., "Correct!" / "Incorrect.") */
+.feedback {
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #377cfc;
+}
+
+
+.next-button {
+  background-color: #115ff4;
+}
+
+.next-button:hover {
+  background-color: #377cfc;
+}
+
+/* Scoreboard */
+.score-container {
+  flex-shrink: 0;
+  width: 250px;
+  height: 100%;
+  background: #ffffff;
+  color: #eee;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  overflow-y: auto;
+}
+
+.score-title {
+  font-size: 1.3em;
+  color: #000000;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
