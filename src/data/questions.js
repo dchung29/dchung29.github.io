@@ -97,7 +97,7 @@ const questions = [
     options: [
       { text: "Option 1: A set of vectors unaffected by the linear transformation", isCorrect: false },
       { text: "Option 2: A set of vectors  that stay on their original span after the linear transformation", isCorrect: true },
-      { text: "Option 3: The transformed eigen-components v_x' and v_y' always sum to the transformed vector v', but only if the transformation is a rotation", isCorrect: false },
+      { text: "Option 3: A basis for the null space of the linear transformation", isCorrect: false },
       { text: "Option 4: All of the above.", isCorrect: false },
     ]
   },
@@ -116,7 +116,7 @@ const questions = [
   {
     /* Eigendecomposition of a matrix question */
     id: 10,
-    prompt: "Eigendecomposition of a matrix: What does the process in this visualization (basis change --> scaling --> basis change back) represent?",
+    prompt: "What does the process in this visualization (basis change --> scaling --> basis change back) represent?",
     visualization: "/videos/Eigendecomposition.mp4",
     options: [
       { text: "A random sequence of transformations unrelated to the original matrix M", isCorrect: false },
@@ -128,24 +128,24 @@ const questions = [
   {
     /* Column Rank vs Row Rank question */
     id: 11,
-    prompt: "What does the plane with the collapsed vectors represent in this visualization?",
-    visualization: "/videos/NullSpaceVisualization.mp4",
+    prompt: "A 2x3 matrix has 2 linearly independent rows. What can we conclude about its column space and row space?",
+    visualization: "/videos/ColumnRowRankVectors.mp4",
     options: [
-      { text: "Column Space", isCorrect: true },
-      { text: "Null Space", isCorrect: false },
-      { text: "Row Space", isCorrect: false },
-      { text: "Arbitrary Coordinate Plane", isCorrect: false },
+      { text: "The column space has dimension 3, and the row space has dimension 2", isCorrect: false },
+      { text: "The row space and column space always have the same dimension.", isCorrect: true },
+      { text: "The row space has dimension 3, while the column space has dimension 2.", isCorrect: false },
+      { text: "None of the above.", isCorrect: false },
     ]
   },
   {
     /* Squishifying into Null Space question */
     id: 12,
-    prompt: "A 2x3 matrix has 2 linearly independent rows. What can we conclude about its column space and row space?",
-    visualization: "/videos/ColumnRowRankVectors.mp4",
+    prompt: "After applying the transformation, all vectors lie on a single line. What does this imply about the null space of A?",
+    visualization: "/videos/NullSpaceVisualization.mp4",
     options: [
-      { text: "The column space has dimension 3, and the row space has dimension 2.", isCorrect: false },
-      { text: "The row space and column space always have the same dimension.", isCorrect: true },
-      { text: "The row space has dimension 3, while the column space has dimension 2.", isCorrect: false },
+      { text: "The null space is trivial (only the zero vector).", isCorrect: false },
+      { text: "The null space contains all vectors perpendicular to the line.", isCorrect: true },
+      { text: "The null space is a two-dimensional plane.", isCorrect: false },
       { text: "None of the above", isCorrect: false },
     ]
   },
@@ -164,7 +164,7 @@ const questions = [
   {
     /* Column Space Representation question */
     id: 14,
-    prompt: "What does the plane with the collapsed vectors represent in this visualization?",
+    prompt: "After applying T, the z components are lost in the transformation. What does the plane with the collapsed vectors represent in this visualization?",
     visualization: "/videos/NullSpaceVisualization.mp4",
     options: [
       { text: "Column Space", isCorrect: true },
@@ -177,7 +177,7 @@ const questions = [
     /* Rank representation question */
     id: 15,
     prompt: "What does the fact that both the column space and row space form planes suggest about the rank of the matrix?",
-    visualization: "/videos/NullSpaceVisualization.mp4",
+    visualization: "/videos/ColumnRowRankVectors.mp4",
     options: [
       { text: "The rank is 3 because the column space and row space span 3D space.", isCorrect: false },
       { text: "The rank is 1 because both spaces are one-dimensional.", isCorrect: false },
