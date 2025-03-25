@@ -130,10 +130,10 @@ const questions = [
     prompt: "A 2x3 matrix has 2 linearly independent rows. What can we conclude about its column space and row space?",
     visualization: "/videos/ColumnRowRankVectors.mp4",
     options: [
-      { text: "The column space has dimension 3, and the row space has dimension 2", isCorrect: false },
-      { text: "The row space and column space always have the same dimension.", isCorrect: true },
-      { text: "The row space has dimension 3, while the column space has dimension 2.", isCorrect: false },
-      { text: "None of the above.", isCorrect: false },
+      { text: "A: The column space has dimension 3, and the row space has dimension 2", isCorrect: false },
+      { text: "B: The row space and column space always have the same dimension.", isCorrect: true },
+      { text: "C: The row space has dimension 3, while the column space has dimension 2.", isCorrect: false },
+      { text: "D: None of the above.", isCorrect: false },
     ]
   },
   {
@@ -142,10 +142,10 @@ const questions = [
     prompt: "After applying the transformation, all vectors lie on a single line. What does this imply about the null space of A?",
     visualization: "/videos/NullSpaceVisualization.mp4",
     options: [
-      { text: "The null space is trivial (only the zero vector).", isCorrect: false },
-      { text: "The null space contains all vectors perpendicular to the line.", isCorrect: true },
-      { text: "The null space is a two-dimensional plane.", isCorrect: false },
-      { text: "None of the above", isCorrect: false },
+      { text: "A: The null space is trivial (only the zero vector).", isCorrect: false },
+      { text: "B: The null space contains all vectors perpendicular to the line.", isCorrect: true },
+      { text: "C: The null space is a two-dimensional plane.", isCorrect: false },
+      { text: "D: None of the above", isCorrect: false },
     ]
   },
   {
@@ -154,10 +154,10 @@ const questions = [
     prompt: "Which of the following correctly describes the Rank-Nullity Theorem?",
     visualization: "/videos/RankNullityTheorem.mp4",
     options: [
-      { text: "The sum of the dimensions of the null space and column space of a linear transformation equals the dimension of the domain.", isCorrect: true },
-      { text: "The sum of the dimensions of the null space and column space of a linear transformation equals the dimension of the codomain.", isCorrect: false },
-      { text: "The sum of the dimensions of the null space and domain equals the dimension of the column space.", isCorrect: false },
-      { text: "The dimension of the null space is always greater than the dimension of the column space.", isCorrect: false },
+      { text: "A: The sum of the dimensions of the null space and column space of a linear transformation equals the dimension of the domain.", isCorrect: true },
+      { text: "B: The sum of the dimensions of the null space and column space of a linear transformation equals the dimension of the codomain.", isCorrect: false },
+      { text: "C: The sum of the dimensions of the null space and domain equals the dimension of the column space.", isCorrect: false },
+      { text: "D: The dimension of the null space is always greater than the dimension of the column space.", isCorrect: false },
     ]
   },
   {
@@ -166,10 +166,10 @@ const questions = [
     prompt: "After applying T, the z components are lost in the transformation. What does the plane with the collapsed vectors represent in this visualization?",
     visualization: "/videos/NullSpaceVisualization.mp4",
     options: [
-      { text: "Column Space", isCorrect: true },
-      { text: "Null Space", isCorrect: false },
-      { text: "Row Space", isCorrect: false },
-      { text: "Arbitrary Coordinate Plane", isCorrect: false },
+      { text: "A: Column Space", isCorrect: true },
+      { text: "B: Null Space", isCorrect: false },
+      { text: "C: Row Space", isCorrect: false },
+      { text: "D: Arbitrary Coordinate Plane", isCorrect: false },
     ]
   },
   {
@@ -178,10 +178,10 @@ const questions = [
     prompt: "What does the fact that both the column space and row space form planes suggest about the rank of the matrix?",
     visualization: "/videos/ColumnRowRankVectors.mp4",
     options: [
-      { text: "The rank is 3 because the column space and row space span 3D space.", isCorrect: false },
-      { text: "The rank is 1 because both spaces are one-dimensional.", isCorrect: false },
-      { text: "The rank is 2 because both spaces are two-dimensional subspaces of 3D space.", isCorrect: true },
-      { text: "The rank is 0 because the column and row spaces are both empty.", isCorrect: false },
+      { text: "A: The rank is 3 because the column space and row space span 3D space.", isCorrect: false },
+      { text: "B: The rank is 1 because both spaces are one-dimensional.", isCorrect: false },
+      { text: "C: The rank is 2 because both spaces are two-dimensional subspaces of 3D space.", isCorrect: true },
+      { text: "D: The rank is 0 because the column and row spaces are both empty.", isCorrect: false },
     ]
   },
 ];
