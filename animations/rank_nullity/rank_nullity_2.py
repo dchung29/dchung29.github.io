@@ -6,11 +6,6 @@ config.pixel_width = 1920
 config.pixel_height = 1080
 config.frame_rate = 60
 
-"""
-TODO:
-- fix vector label positions
-- come up with better explanation text
-"""
 
 class RankNullityTheorem(ThreeDScene):
     def construct(self):

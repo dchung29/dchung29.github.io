@@ -5,11 +5,11 @@ const questions = [
     prompt: "Let's start simple: What transformation does this visualization represent?",
     visualization: "/videos/ScalingTransformation.mp4",
     options: [
-      { text: "Scaling", isCorrect: true },
-      { text: "Rotation", isCorrect: false },
-      { text: "Shear", isCorrect: false },
-      { text: "Reflection", isCorrect: false },
-      { text: "Projection", isCorrect: false }
+      { text: "A: Scaling", isCorrect: true },
+      { text: "B: Rotation", isCorrect: false },
+      { text: "C: Shear", isCorrect: false },
+      { text: "D: Reflection", isCorrect: false },
+      { text: "E: Projection", isCorrect: false }
     ]
   },
   {
@@ -18,11 +18,11 @@ const questions = [
     prompt: "What transformation does this visualization represent?",
     visualization: "/videos/ShearTransformation.mp4",
     options: [
-      { text: "Scaling", isCorrect: false },
-      { text: "Rotation", isCorrect: false },
-      { text: "Shear", isCorrect: true },
-      { text: "Reflection", isCorrect: false },
-      { text: "Projection", isCorrect: false }
+      { text: "A: Scaling", isCorrect: false },
+      { text: "B: Rotation", isCorrect: false },
+      { text: "C: Shear", isCorrect: true },
+      { text: "D: Reflection", isCorrect: false },
+      { text: "E: Projection", isCorrect: false }
     ]
   },
   {
@@ -31,11 +31,11 @@ const questions = [
     prompt: "What transformation does this visualization represent?",
     visualization: "/videos/RotationTransformation.mp4",
     options: [
-      { text: "Scaling", isCorrect: false },
-      { text: "Rotation", isCorrect: true },
-      { text: "Shear", isCorrect: false },
-      { text: "Reflection", isCorrect: false },
-      { text: "Projection", isCorrect: false }
+      { text: "A: Scaling", isCorrect: false },
+      { text: "B: Rotation", isCorrect: true },
+      { text: "C: Shear", isCorrect: false },
+      { text: "D: Reflection", isCorrect: false },
+      { text: "E: Projection", isCorrect: false }
     ]
   },
   {
@@ -44,11 +44,11 @@ const questions = [
     prompt: "What transformation does this visualization represent?",
     visualization: "/videos/ReflectionTransformation.mp4",
     options: [
-      { text: "Scaling", isCorrect: false },
-      { text: "Rotation", isCorrect: false },
-      { text: "Shear", isCorrect: false },
-      { text: "Reflection", isCorrect: true },
-      { text: "Projection", isCorrect: false }
+      { text: "A: Scaling", isCorrect: false },
+      { text: "B: Rotation", isCorrect: false },
+      { text: "C: Shear", isCorrect: false },
+      { text: "D: Reflection", isCorrect: true },
+      { text: "E: Projection", isCorrect: false }
     ]
   },
   {
@@ -57,11 +57,11 @@ const questions = [
     prompt: "What transformation does this visualization represent?",
     visualization: "/videos/ProjectionTransformation.mp4",
     options: [
-      { text: "Scaling", isCorrect: false },
-      { text: "Rotation", isCorrect: false },
-      { text: "Shear", isCorrect: false },
-      { text: "Reflection", isCorrect: false },
-      { text: "Projection", isCorrect: true }
+      { text: "A: Scaling", isCorrect: false },
+      { text: "B: Rotation", isCorrect: false },
+      { text: "C: Shear", isCorrect: false },
+      { text: "D: Reflection", isCorrect: false },
+      { text: "E: Projection", isCorrect: true }
     ]
   },
   {
@@ -70,10 +70,10 @@ const questions = [
     prompt: "Based on this visualization, which vectors are eigenvectors (given their corresponding linear transformations)?",
     visualization: "/videos/Eigenvectors.mp4",
     options: [
-      { text: "Option 1: Vector A & Vector C", isCorrect: false },
-      { text: "Option 2: Vector B & Vector C", isCorrect: false },
-      { text: "Option 3: Vector B & Vector D", isCorrect: true },
-      { text: "Option 4: All Vectors", isCorrect: false },
+      { text: "A: Vector A & Vector C", isCorrect: false },
+      { text: "B: Vector B & Vector C", isCorrect: false },
+      { text: "C: Vector B & Vector D", isCorrect: true },
+      { text: "D: All Vectors", isCorrect: false },
     ]
   },
   {
@@ -82,23 +82,22 @@ const questions = [
     prompt: "Which of these statements is true based on the visualization?",
     visualization: "/videos/VectorEigenComponents.mp4",
     options: [
-      { text: "Option 1: The sum of the transformed components is different from the transformed vector v", isCorrect: false },
-      { text: "Option 2: The linear transformation preserves vector direction", isCorrect: false },
-      { text: "Option 3: The transformed eigen-components v_x' and v_y' always sum to the transformed vector v', but only if the transformation is a rotation", isCorrect: false },
-      { text: "Option 4: The transformed eigen-components v_x' and v_y' always sum to the transformed corresponding vector v'", isCorrect: true },
-      { text: "Option 5: Each transformed eigen-component stays on its original span when the transformation is diagonalizable (possesses a basis of eigenvectors)", isCorrect: true},
+      { text: "A: The sum of the transformed components is different from the transformed vector v", isCorrect: false },
+      { text: "B: The linear transformation preserves vector direction", isCorrect: false },
+      { text: "C: The transformed eigen-components v_x' and v_y' always sum to the transformed vector v', but only if the transformation is a rotation", isCorrect: false },
+      { text: "D: The transformed eigen-components v_x' and v_y' always sum to the transformed corresponding vector v'", isCorrect: true },
     ]
   },
   {
-    /* Eigenspace question */
+    /* Eigen space question */
     id: 8,
-    prompt: "What does an eigenspace represent?",
+    prompt: "What does an Eigenspace represent?",
     visualization: "/videos/Eigenspace.mp4",
     options: [
-      { text: "Option 1: A set of vectors unaffected by the linear transformation", isCorrect: false },
-      { text: "Option 2: A set of vectors  that stay on their original span after the linear transformation", isCorrect: true },
-      { text: "Option 3: A basis for the null space of the linear transformation", isCorrect: false },
-      { text: "Option 4: All of the above.", isCorrect: false },
+      { text: "A: A set of vectors unaffected by the linear transformation", isCorrect: false },
+      { text: "B: A set of vectors  that stay on their original span after the linear transformation", isCorrect: true },
+      { text: "C: A subspace that excludes the null space of the transformation.", isCorrect: false },
+      { text: "D: All of the above.", isCorrect: false },
     ]
   },
   {
@@ -107,10 +106,10 @@ const questions = [
     prompt: "What does the vector along the axis of rotation represent?",
     visualization: "/videos/EigenvectorsUnderRotation.mp4",
     options: [
-      { text: "A vector that is unaffected by the rotation (transformation)", isCorrect: true },
-      { text: "A vector in the null space of the rotation (transformation)", isCorrect: false },
-      { text: "A basis vector for the plan of rotation", isCorrect: false },
-      { text: "An eigenvector with eigenvalue 1", isCorrect: true },
+      { text: "A: A normal vector that is always unaffected by any rotation", isCorrect: true },
+      { text: "B: A vector that scales but doesn’t change direction due to the rotation", isCorrect: false },
+      { text: "C: A basis vector for the plane of rotation", isCorrect: false },
+      { text: "D: An eigenvector with eigenvalue 1", isCorrect: true },
     ]
   },
   {
