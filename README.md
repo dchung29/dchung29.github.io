@@ -56,18 +56,18 @@ npm start
   - `/null_space` - Null space and rank-nullity theorem visualizations
 
 ## Technologies:
-- Frontend Technologies:
-• React.js (v19.0.0) – Used for building the user interface and managing application state.
-• React Router (v7.4.0) – Handles navigation and routing within the React application.
-• CSS3 – Used for styling, including animations, flexbox/grid layouts, and responsive design.
+Frontend Technologies:
+- React.js (v19.0.0) – Used for building the user interface and managing application state.
+- React Router (v7.4.0) – Handles navigation and routing within the React application.
+- CSS3 – Used for styling, including animations, flexbox/grid layouts, and responsive design.
 
-- MANIM (Mathematical Animation Engine):
-• Python 3.x
-• MANIM Library – mathematical visualizations for concepts used.
+MANIM (Mathematical Animation Engine):
+- Python 3.x
+- MANIM Library – mathematical visualizations for concepts used.
 
-- Development Tools:
-• Node.js – runtime environment for running the React application.
-• npm – Package manager for managing JavaScript dependencies.
+Development Tools:
+- Node.js – runtime environment for running the React application.
+- npm – Package manager for managing JavaScript dependencies.
 
-- Additional Features:
-• Interactive Game Interface: React
+Additional Features:
+- Interactive Game Interface: React
