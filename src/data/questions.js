@@ -79,13 +79,13 @@ const questions = [
   {
     /* Vector Decomposition into Eigenvectors question */
     id: 7,
-    prompt: "Which of these statements is true based on the visualization?",
-    visualization: "/videos/VectorEigenComponents.mp4",
+    prompt: "Symmetric matrix A = [[2, 1], [1, 2]] is orthogonally diagonalizable because A^T = A. Based on this visualization, which of the following statements is true? ",
+    visualization: "/videos/SymmetricMatrixVisualization.mp4",
     options: [
-      { text: "A: The sum of the transformed components is different from the transformed vector v", isCorrect: false },
-      { text: "B: The linear transformation preserves vector direction", isCorrect: false },
-      { text: "C: The transformed eigen-components v_x' and v_y' always sum to the transformed vector v', but only if the transformation is a rotation", isCorrect: false },
-      { text: "D: The transformed eigen-components v_x' and v_y' always sum to the transformed corresponding vector v'", isCorrect: true },
+      { text: "A: A is symmetric but its eigenvectors are not related to the eigenvalues.", isCorrect: false },
+      { text: "B: A is symmetric because it equals its transpose, but eigenvectors corresponding to different eigenvalues can be arbitrarily oriented.", isCorrect: false },
+      { text: "C: A is diagonalizable with real eigenvalues, but the orthogonality of its eigenvectors is not guaranteed.", isCorrect: false },
+      { text: "D: Eigenvectors corresponding to distinct eigenvalues of A (different eigenspaces) are always orthogonal.'", isCorrect: true },
     ]
   },
   {

@@ -7,6 +7,7 @@ config.pixel_width = 1920
 config.pixel_height = 1080
 config.frame_rate = 60
 
+
 #######################################################################################
 # Question 1: Basic Transformation and Invariance 
 # "In linear algebra, an eigenvector or characteristic vector is a vector that has its direction unchanged (or reversed) by a given linear transformation."
@@ -39,7 +40,7 @@ class Eigenvectors(Scene):
         vector_A.shift(axes.coords_to_point(0, 0))
         label_A = Text("Vector A", font_size=24, color=ORANGE).next_to(vector_A.get_end(), UP)
         self.play(Create(vector_A), Write(label_A))
-        
+
         # Matrices M_1 and M_2 (linear transformation)
         M1_text = Text(
             "Transformation M_1 =\n"
@@ -47,7 +48,7 @@ class Eigenvectors(Scene):
             "⎣ 0   ½ ⎦",
             font_size=40, color=ORANGE
         )
-        
+
         M1_text.to_edge(UL)
 
         M2_text = Text(
@@ -64,14 +65,14 @@ class Eigenvectors(Scene):
         A = [[2, 0], [0, 0.5]]
         self.play(ApplyMatrix(A, vector_A, run_time=3))
         self.wait(1)
-        
+
         # Introducing vector B (eigenvector)
 
         vector_B = Vector([2, 0], color=GREEN)
         vector_B.shift(axes.coords_to_point(0, 0))
-        label_B = Text("Vector B", font_size=24 , color=GREEN).next_to(vector_B.get_end(), DOWN)
+        label_B = Text("Vector B", font_size=24, color=GREEN).next_to(vector_B.get_end(), DOWN)
         self.play(Create(vector_B), Write(label_B))
-        
+
         # Apply A to Vector B slowly.
         # Since B is along the x-axis, it is an eigenvector for A.
         self.play(FadeOut(M1_text))
@@ -86,13 +87,13 @@ class Eigenvectors(Scene):
         self.wait(1)
         self.play(ApplyMatrix(A, vector_B, run_time=3))
         self.wait(1)
-        
+
         # Introducing vector C
         vector_C = Vector([1, 2], color=RED)
         vector_C.shift(axes.coords_to_point(0, 0))
-        label_C = Text("Vector C", font_size=24 , color=RED).next_to(vector_C.get_end(), UP)
+        label_C = Text("Vector C", font_size=24, color=RED).next_to(vector_C.get_end(), UP)
         self.play(Create(vector_C), Write(label_C))
-        
+
         # Apply A to Vector C slowly.
         self.play(FadeOut(M1_text))
         M1_text = Text(
@@ -112,9 +113,9 @@ class Eigenvectors(Scene):
         # Introducing vector D (also eigenvector)
         vector_D = Vector([3, 0], color=PURPLE)
         vector_D.shift(axes.coords_to_point(0, 0))
-        label_D = Text("Vector D", font_size=24 , color=PURPLE).next_to(vector_D.get_end(), UP)
+        label_D = Text("Vector D", font_size=24, color=PURPLE).next_to(vector_D.get_end(), UP)
         self.play(Create(vector_D), Write(label_D))
-        
+
         # modified transformation B = [[-2, 0], [0, 0.5]] (reverses the direction of vectors along the x-axis.)
         self.play(Transform(M1_text, M2_text))
         self.wait(1)
@@ -122,12 +123,11 @@ class Eigenvectors(Scene):
         self.play(FadeOut(label_D))
         self.play(ApplyMatrix(B, vector_D, run_time=3))
         self.wait(1)
-        label_D = Text("Vector D", font_size=24 , color=PURPLE).next_to(vector_D.get_end(), UP)
+        label_D = Text("Vector D", font_size=24, color=PURPLE).next_to(vector_D.get_end(), UP)
         self.play(Write(label_D))
         self.wait(1)
         self.play(FadeOut(M2_text))
         self.wait(1)
-        
 
         eigenvector_explanation = Text(
             "An eigenvector of a linear transformation T is a vector\n"
@@ -143,135 +143,126 @@ class Eigenvectors(Scene):
 
 
 #######################################################################################
-# Question 2: Expressing a Vector as a Sum of its Eigenvector Components
-# Any vector can be expressed as a sum of eigenvector components (when the transformation is diagonalizable (possesses a basis of eigenvectors))
+# Question 2: Matrix Symmetry and Orthogonal Eigenvectors
+# “If A is symmetric, then any two eigenvectors from different eigenspaces are orthogonal” [textbook]. Moreover, “and n x n symmetric matrix A … has n real eigenvalues, counting multiplicities[,] … the eigenspaces are mutually orthogonal, … [and] A is orthogonally diagonalizable” [textbook]. The visualization first shows that the given symmetric matrix A is “orthogonally diagonalizable if there are an orthogonal matrix P (with P -1 = PT ) and a diagonal matrix D such that A = PDPT = PDP -1 … [or when] AT = (PDPT)T = PTTDTPT = PDPT = A” [textbook].  Here, matrices AT and A are equated to each other, proving this property. Matrix A, being a 2 x 2 orthogonally diagonalizable matrix, is then shown to have 2 real eigenvalues. The eigenvectors corresponding to these two eigenvalues are animated, and their orthogonality emphasized. Students are then asked to determine which concept is best represented by this visualization in relation to the real symmetric matrix A. They should be able to draw upon their knowledge of orthogonality and eigenspaces, as well as the explanations provided in the MANIM visualization to conclude that eigenvalues corresponding to distinct eigenvalues of symmetric matrix A are orthogonal.
 
-# Question: Which of these statements is true based on the visualization?
-# Answer: The transformed eigen components v_x' and v_y' always sum to the transformed corresponding vector v'
-# Alternative Answer: Each transformed eigen-component stays on its original span when the transformation is diagonalizable (possesses a basis of eigenvectors)
-# Other options
-# The sum of the transformed components is different from the transformed vector v
-# The linear transformation preserves vector direction
-# The transformed eigen-components v_x' and v_y' always sum to the transformed vector v', but only if the transformation is a rotation.
+# Question: Symmetric matrix A = [[2, 1], [1, 2]] is orthogonally diagonalizable because A^T = A. Based on this visualization, which of the following statements is true?
+# Answer: Eigenvectors corresponding to distinct eigenvalues of A (different eigenspaces) are always orthogonal.
+# Other Options
+# A is symmetric but its eigenvectors are not related to the eigenvalues.
+# A is symmetric because it equals its transpose, but eigenvectors corresponding to different eigenvalues can be arbitrarily oriented.
+# A is diagonalizable with real eigenvalues, but the orthogonality of its eigenvectors is not guaranteed.
 #######################################################################################
 
-class VectorEigenComponents(Scene):
-     def construct(self):
+class SymmetricMatrixVisualization(Scene):
+    def construct(self):
+        # intro
+        matrix_A = Text("Symmetric Matrix A \n"
+                        "⎡ 2   1 ⎤\n"
+                        "⎣ 1   2 ⎦", font_size=32, color=BLUE).to_edge(UL)
+        self.play(Write(matrix_A))
+        self.wait(2)
+
+        # Display the transpose of A and show equality
+        transpose_A = Text("And Its Transpose, A^T=\n"
+                           "⎡ 2   1 ⎤\n"
+                           "⎣ 1   2 ⎦", font_size=32, color=BLUE).to_edge(UR)
+        self.play(Write(transpose_A))
+        self.wait(1)
+
+        eq_arrow = Arrow(start=matrix_A.get_right(), end=transpose_A.get_left(), buff=0.1, stroke_width=3, color=BLUE)
+        eq_text = Text("Are Equivalent: A = A^T", font_size=32, color=BLUE).to_edge(UP)
+        self.play(Create(eq_arrow), Write(eq_text))
+        self.wait(2)
+        self.play(FadeOut(matrix_A, transpose_A, eq_arrow, eq_text))
+        symmetry_explanation = Text("A is thus symmetric and orthogonally diagonalizable", font_size=32,
+                                    color=PURPLE).to_edge(UP)
+        self.play(Write(symmetry_explanation))
+        self.wait(2)
+
         # axes
         axes = Axes(
             x_range=[-5, 5, 1],
-            y_range=[-5, 5, 1],
+            y_range=[-4, 4, 1],
             x_length=8,
-            y_length=8,
+            y_length=6,
             tips=True
         )
         self.play(Create(axes))
         self.wait(1)
 
-        # transformation matrix
-        matrix = [[2, 0], [0, -1]]
-
-        # original vector
-        original_vector = Vector([2, 1], color=BLUE)
-        label_v = Text("v", font_size=24, color=BLUE).next_to(original_vector.get_end(), UP)
-        self.play(Create(original_vector), Write(label_v))
+        self.play(FadeOut(symmetry_explanation))
+        eigen_text = Text("Eigenvalues of A:\n"
+                          "λ = 3 and  λ = 1", font_size=32, color=BLUE).to_edge(UP)
+        self.play(Write(eigen_text))
         self.wait(1)
-        decomp_explanation_one = Text("Take vector v (2,1)",font_size=32, color=BLUE)
-        decomp_explanation_one.to_edge(UL)
-        self.play(Write(decomp_explanation_one))
-        self.wait(1)
-        self.play(FadeOut(decomp_explanation_one))
-        decomp_explanation_two = Text(
-            "It can be broken down into its eigenvector components v_x and v_y", font_size=32, color="#fb8535")
-        decomp_explanation_two.to_edge(UL)
-        self.play(Write(decomp_explanation_two))
-        
-        # component vectors along eigenvector directions
-        comp_x = Vector([2, 0], color="#fb8535")
-        comp_y = Vector([0, 1], color="#fb8535")
+        eigenvector_text1 = Text("For λ = 3, eigenvector v_1 =  [1, 1]", font_size=32, color=PINK).to_edge(UL)
+        eigenvector_text2 = Text("For λ = 1, eigenvector v_2 =  [1, -1]", font_size=32, color=GREEN).to_edge(UR)
+        self.play(FadeOut(eigen_text), Write(eigenvector_text1), Write(eigenvector_text2))
 
-        label_vx = Text("v_x", font_size=24, color="#fb8535").next_to(comp_x.get_end(), UP)
-        label_vy = Text("v_y", font_size=24, color="#fb8535").next_to(comp_y.get_end(), RIGHT)
+        # eigenvectors
+        v1 = np.array([1, 1])
+        v2 = np.array([1, -1])
 
-        self.play(Create(comp_x), Create(comp_y), Write(label_vx), Write(label_vy))
-        self.wait(2)
-        self.play(FadeOut(decomp_explanation_two))
+        # normalize eigenvectors
+        v1 = v1 / np.linalg.norm(v1)
+        v2 = v2 / np.linalg.norm(v2)
+
+        # draw eigenvectors
+        eigenvector1 = Vector(direction=v1, color=PINK).shift(ORIGIN)
+        eigenvector2 = Vector(direction=v2, color=GREEN).shift(ORIGIN)
+        self.play(Create(eigenvector1), Create(eigenvector2))
         self.wait(1)
 
-        decomp_explanation_three = Text(
-            "When we transform vector v using T =\n"
-            "⎡ 2   0 ⎤\n"
-            "⎣ 0  -1 ⎦",font_size=32, color="#fb8535")
-        decomp_explanation_three.to_edge(UL)
-        self.play(Write(decomp_explanation_three))
-        self.wait(1)
-
-        # transform original vector
-        transformed_vector = original_vector.copy().apply_matrix(matrix)
-        self.play(Transform(original_vector, transformed_vector), FadeOut(label_v))
-        self.wait(1)
-        self.play(FadeOut(decomp_explanation_three))
-        self.wait(1)
-
-        decomp_explanation_four = Text(
-            "We also transform its eigencomponents",font_size=32, color="#fb8535")
-        decomp_explanation_four.to_edge(UL)
-        self.play(Write(decomp_explanation_four))
+        label_v1 = Text("v1", color=PINK).scale(0.4).next_to(eigenvector1.get_end(), RIGHT * 0.2)
+        label_v2 = Text("v2", color=GREEN).scale(0.4).next_to(eigenvector2.get_end(), LEFT * 0.9)
+        self.play(Write(label_v1), Write(label_v2))
         self.wait(2)
 
-        # transform components separately
-        transformed_comp_x = comp_x.copy().apply_matrix(matrix)
-        transformed_comp_y = comp_y.copy().apply_matrix(matrix)
+        # orthogonality
+        # square corners
+        p1 = 0.3 * np.array([v1[0], v1[1], 0])
+        p2 = 0.3 * np.array([v2[0], v2[1], 0])
+        p3 = p1 + p2
 
-        transformed_comp_x.set_color("#fb8535")
-        transformed_comp_y.set_color("#fb8535")
+        right_angle_marker = Polygon(
+            ORIGIN,
+            p1,
+            p3,
+            p2,
+            color=PURPLE,
+            fill_color=PURPLE,
+            fill_opacity=0.5
+        )
+        self.play(Create(right_angle_marker))
 
-        self.play(Transform(comp_x, transformed_comp_x))
-        self.wait(1)
-        self.play(Transform(comp_y, transformed_comp_y), FadeOut(label_vy))
-        self.wait(2)
-        self.play(FadeOut(decomp_explanation_four))
+        self.play(FadeOut(eigenvector_text1, eigenvector_text2))
 
-       
-        transformed_comp_y.move_to(transformed_comp_x.get_end())
-        self.play(FadeOut(transformed_comp_y))
-        label_vy = Text("v_y", font_size=24, color="#fb8535").next_to(transformed_comp_y.get_end(), RIGHT)
-        self.play(ApplyMethod(transformed_comp_y.shift, transformed_comp_x.get_end() - transformed_comp_y.get_start()), Write(label_vy))
-        self.wait(2)
-
-        # Explanation
-        combined_label = Text("v' = v_x' + v_y'", font_size=32, color=BLUE).next_to(transformed_comp_y.get_end(), DOWN)
-        self.play(Write(combined_label))
-        self.wait(3)
-
-        # Question
-        question_text = Text(
-            "Based on this visualization, which of these statements is correct?",
-            font_size=32, color="#fb8535"
-        ).to_edge(DOWN)
-
-        self.play(Write(question_text))
+        # question
+        question = Text("Based on this visualization, which of the following statements is true?", font_size=32,
+                        color=PURPLE).to_edge(DOWN)
+        self.play(Write(question))
         self.wait(3)
 
 
 #######################################################################################
 # Question 3: Understanding eigenvectors intuitively via 3D rotations
 # Show a couple different vectors, with one along the z axis. Then apply the same 3D rotation to each vector. Observe as all vectors are rotated off their span, except for the vector along the axis of rotation (z axis). Intuitively, this should be understood to be an eigenvector
-# From Week 5 Lecture 
+# From Week 5 Lecture
 
 # Question Statement: What does the vector along the axis of rotation represent?
 # Correct Option: an eigenvector with eigenvalue 1
 # Other Options:
 # A normal vector that changes direction under rotation (normal vectors don't always stay unchanged in rotation anyway)
 # A vector that undergoes scaling but not rotation (vector isn't scaled, it remains completely unchanged since the applied transformation was a rotation)
-# A basis vector for the plan of rotation (not a basis for the *plane* of rotation; it's the axis around which the plane rotates)
+# A basis vector for the plane of rotation (not a basis for the *plane* of rotation; it's the axis around which the plane rotates)
 #######################################################################################
 
 class EigenvectorsUnderRotation(ThreeDScene):
     def construct(self):
         # 3D space (pls render plsplsplsplspls)
         self.set_camera_orientation(phi=75 * DEGREES, theta=30 * DEGREES)
-        
+
         axes = ThreeDAxes()
         self.add(axes)
         self.wait(1)
@@ -289,7 +280,7 @@ class EigenvectorsUnderRotation(ThreeDScene):
         eigen_label = Text("Vector A", font_size=24).next_to(eigen_arrow, UP)
 
         # Non-eigenvectors
-        vec1 = np.array([1.0, 1.0, 0.0])  
+        vec1 = np.array([1.0, 1.0, 0.0])
         vec2 = np.array([-1.0, 1.0, 0.0])
         vec3 = np.array([1.0, -1.0, 0.0])
 
@@ -300,35 +291,36 @@ class EigenvectorsUnderRotation(ThreeDScene):
         vec1_label = Text("Vector B", font_size=24, color=BLUE).move_to([1, -1, 1])
         vec2_label = Text("Vector C", font_size=24, color=GREEN).move_to([1, 1, 1])
         vec3_label = Text("Vector D", font_size=24, color=YELLOW).move_to([-1, -1, -1])
-        
 
-        self.play(Create(eigen_arrow), run_time=2)
+        self.play(Create(eigen_arrow), run_time=1)
         self.add_fixed_in_frame_mobjects(eigen_label)
         self.wait(1)
-        self.play(Create(vec1_arrow), run_time=2)
+        self.play(Create(vec1_arrow), run_time=1)
         self.add_fixed_in_frame_mobjects(vec1_label)
         self.wait(1)
-        self.play(Create(vec2_arrow), run_time=2)
+        self.play(Create(vec2_arrow), run_time=1)
         self.add_fixed_in_frame_mobjects(vec2_label)
         self.wait(1)
-        self.play(Create(vec3_arrow), run_time=2)
+        self.play(Create(vec3_arrow), run_time=1)
         self.add_fixed_in_frame_mobjects(vec3_label)
         self.wait(2)
 
-        rotation_label = Text("Applying a 3D rotation (transformation) about the Z axis gives us: ", font_size=28, color="#fb8535").to_edge(UP)
+        rotation_label = Text("Applying a 3D rotation (transformation) about the Z axis gives us: ", font_size=28,
+                              color="#fb8535").to_edge(UP)
         self.add_fixed_in_frame_mobjects(rotation_label)
         self.wait(1)
 
         # rotate vectors around z-axis (90 degrees)
-        self.play(Rotate(vec1_arrow, angle=90 * DEGREES, axis=eigenvector), run_time=3)
+        self.play(Rotate(vec1_arrow, angle=90 * DEGREES, axis=eigenvector), run_time=2)
         self.wait(1)
-        self.play(Rotate(vec2_arrow, angle=90 * DEGREES, axis=eigenvector), run_time=3)
+        self.play(Rotate(vec2_arrow, angle=90 * DEGREES, axis=eigenvector), run_time=2)
         self.wait(1)
-        self.play(Rotate(vec3_arrow, angle=90 * DEGREES, axis=eigenvector), run_time=3)
+        self.play(Rotate(vec3_arrow, angle=90 * DEGREES, axis=eigenvector), run_time=2)
         self.wait(2)
 
         # Question
-        question_text = Text("What does the vector along the axis of rotation represent?", font_size=36, color="#fb8535").to_edge(DOWN)
+        question_text = Text("What does the vector along the axis of rotation represent?", font_size=36,
+                             color="#fb8535").to_edge(DOWN)
         self.play(FadeOut(rotation_label))
         self.add_fixed_in_frame_mobjects(question_text)
         self.wait(2)
@@ -385,11 +377,11 @@ class Eigendecomposition(Scene):
 
         # Direct transformation of v by M (to compare at the end)
         direct_transformation_label = Text("Let's transform vector v using matrix M =\n"
-            "⎡ 2   1 ⎤\n"
-            "⎣ 0   3 ⎦", font_size=28, color="#fb8535").to_edge(UP)
+                                           "⎡ 2   1 ⎤\n"
+                                           "⎣ 0   3 ⎦", font_size=28, color="#fb8535").to_edge(UP)
         self.play(Write(direct_transformation_label))
         self.wait(2)
-        
+
         direct_vector = original_vector.copy().apply_matrix(M)
         direct_vector.set_color(BLUE)
         label_v_prime = Text("v'", font_size=24, color=BLUE).next_to(direct_vector.get_end(), UP)
@@ -401,7 +393,9 @@ class Eigendecomposition(Scene):
 
         self.play(FadeOut(direct_transformation_label))
         self.wait(1)
-        stepwise_transformation_label = Text("Now let's transform the original vector v using the following stepwise transformation process", font_size=28, color="#fb8535").to_edge(UP)
+        stepwise_transformation_label = Text(
+            "Now let's transform the original vector v using the following stepwise transformation process",
+            font_size=28, color="#fb8535").to_edge(UP)
         self.play(Write(stepwise_transformation_label))
         self.wait(1)
         self.play(FadeOut(stepwise_transformation_label))
@@ -446,7 +440,8 @@ class Eigendecomposition(Scene):
 
         # Question
         question_text = Text("What does the stepwise process represent?\n"
-        "(Basis Change → Scaling → Basis Change Back)", font_size=32, color="#fb8535").to_edge(DOWN)
+                             "(Basis Change → Scaling → Basis Change Back)", font_size=32, color="#fb8535").to_edge(
+            DOWN)
         self.play(FadeOut(final_text), Write(question_text))
         self.wait(2)
 
@@ -458,7 +453,7 @@ class Eigendecomposition(Scene):
 # https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors#:~:text=The%20set%20of%20all%20eigenvectors%20of%20T%20corresponding%20to%20the,basis%20is%20called%20an%20eigenbasis.
 
 # Question: What does an eigenspace represent?
-# Answer: A set of vectors  that stay on their original span after the linear transformation 
+# Answer: A set of vectors  that stay on their original span after the linear transformation
 # Other Options
 # A set of vectors unaffected by the linear transformation
 # A basis for the null space of the linear transformation
@@ -480,7 +475,7 @@ class Eigenspace(Scene):
 
         # transformation matrix (shear transformation)
         matrix = [[2, 0], [0, 1]]
-        
+
         # highlight eigenspace (x-axis)
         eigenspace = Line(start=LEFT * 4, end=RIGHT * 4, color="#fb8535")
         label_eigenspace = Text("Eigenspace", font_size=24, color="#fb8535").next_to(eigenspace, UR)
@@ -491,7 +486,8 @@ class Eigenspace(Scene):
         # Vectors inside eigenspace (these are gonna stay on span)
         eig_vec1 = Vector([1, 0], color=BLUE)
         eig_vec2 = Vector([-2, 0], color=BLUE)
-        eigenspace_text_two = Text("Now let's define vectors inside this eigenspace", font_size=28, color=BLUE).to_edge(UP)
+        eigenspace_text_two = Text("Now let's define vectors inside this eigenspace", font_size=28, color=BLUE).to_edge(
+            UP)
         self.play(FadeOut(eigenspace_text_one), Write(eigenspace_text_two))
         self.play(Create(eig_vec1))
         self.wait(1)
@@ -501,7 +497,8 @@ class Eigenspace(Scene):
         # Vectors outside eigenspace (these will shear)
         non_eig_vec1 = Vector([2, 1], color=GREEN)
         non_eig_vec2 = Vector([-2, -1], color=GREEN)
-        eigenspace_text_three = Text("Finally let's define vectors outside the eigenspace", font_size=28, color=GREEN).to_edge(UP)
+        eigenspace_text_three = Text("Finally let's define vectors outside the eigenspace", font_size=28,
+                                     color=GREEN).to_edge(UP)
         self.play(FadeOut(eigenspace_text_two), Write(eigenspace_text_three))
         self.play(Create(non_eig_vec1))
         self.wait(1)
@@ -513,19 +510,23 @@ class Eigenspace(Scene):
         transformed_eig_vec2 = eig_vec2.copy().apply_matrix(matrix)
         transformed_non_eig_vec1 = non_eig_vec1.copy().apply_matrix(matrix)
         transformed_non_eig_vec2 = non_eig_vec2.copy().apply_matrix(matrix)
-        
-        eigenspace_text_four = Text("Observe as all four vectors, inside and outside the eigenspace, undergo a shear transformation", font_size=28, color="#fb8535").to_edge(UP)
+
+        eigenspace_text_four = Text(
+            "Observe as all four vectors, inside and outside the eigenspace, undergo a shear transformation",
+            font_size=28, color="#fb8535").to_edge(UP)
         self.play(FadeOut(eigenspace_text_three), Write(eigenspace_text_four))
         self.wait(1)
         self.play(Transform(eig_vec1, transformed_eig_vec1))
         self.play(Transform(eig_vec2, transformed_eig_vec2))
         self.wait(1)
-        
+
         self.play(Transform(non_eig_vec1, transformed_non_eig_vec1))
         self.play(Transform(non_eig_vec2, transformed_non_eig_vec2))
         self.wait(2)
-        
+
         # Question
-        question = Text("Based on this visualization, what does an eigenspace represent?", font_size=32, color="#fb8535").to_edge(DOWN)
+        question = Text("Based on this visualization, what does an eigenspace represent?", font_size=32,
+                        color="#fb8535").to_edge(DOWN)
         self.play(FadeOut(eigenspace_text_four), Write(question))
         self.wait(3)
+
