@@ -163,7 +163,7 @@ const questions = [
   {
     /* Column Space Representation question */
     id: 14,
-    prompt: "After applying T, the z components are lost in the transformation. What does the plane with the collapsed vectors represent in this visualization?",
+    prompt: "After applying T, the z components are lost in the transformation. What does the plane with the output vectors represent in this visualization?",
     visualization: "/videos/NullSpaceVisualization.mp4",
     options: [
       { text: "A: Column Space", isCorrect: true },
